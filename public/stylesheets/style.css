@@ -1,5 +1,87 @@
+main{
+    display: flex;
+    flex-flow: column wrap;
+
+}
+
+#slidermain{
+    display: flex;
+    flex-flow: column wrap;
+    align-self: center;
+    height: 50vh;
+    justify-content: center;
+}
+
+#bigcontainer{
+    display:flex;
+    flex-flow: row wrap;
+    width: 19em;
+}
 #colorpreview{
-    width: 10em;
-    height: 2em;
-    border: 2px solid red;
+    width: 30em;
+    height: 4em;
+    border: 2px solid rgba(107, 105, 105, 0.616);
+    border-radius: 30px;
+    align-self: center;
+    margin-top: 10em;
+}
+
+#selectlist{
+    display: flex;
+    flex-flow: column wrap;
+    width: 4em;
+    
+}
+
+#textdisplayer{
+    width: 40em;
+    height: 10em;
+    overflow: auto;
+    border: 2px solid rgba(70, 64, 64, 0.582);
+}
+#onswitch > input[type=checkbox]{
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+  
+#onswitch > label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 150px;
+    height: 50px;
+    background: grey;
+    display: block;
+    border-radius: 100px;
+    position: relative;
+}
+  
+#onswitch > label:after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border-radius: 90px;
+    transition: 0.3s;
+}
+  
+#onswitch > input:checked + label {
+    background: #bada55;
+  }
+  
+  #onswitch > input:checked + label:after {
+    left: calc(100% - 5px);
+    transform: translateX(-100%);
+}
+  
+#onswitch > label:active:after {
+    width: 130px;
+}
+
+#rangeSlider{
+    transform: rotate(270deg);
+    
 }

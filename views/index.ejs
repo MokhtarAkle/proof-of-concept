@@ -4,11 +4,40 @@
     <div id="colorpreview">
 
     </div>
+    <section id="slidermain">
+        <div id="bigcontainer">
+        <div id="onswitch">
+            <input type="checkbox" id="switch" />
+            <label for="switch">Toggle</label>
+        </div>
+        <input type="text" data-coloris>
+
     <div>
         <input type="color" id="colorpicker" name="color"
-               value="#ffffff">
+               value="#34cfe07c">
         <label for="colorpicker">Choose color:</label>
     </div>
+
+
+    <input type="range" min="0" max="255" value="100" id="rangeSlider">
+    </div>
+    <div id="selectlist">
+        <select>
+            <option>Preset 1</option>
+        </select>
+        <select>
+            <option>Effect 1</option>
+        </select>
+        <select>
+            <option>Palette 1</option>
+        </select>
+        <input type="number" placeholder="00.00" min="00.00" max="60.00">
+    </div>
+    <div id="textdisplayer">
+        
+    </div>
+</section>
+
 </main>
 
 <%- include('./partials/foot') %>
