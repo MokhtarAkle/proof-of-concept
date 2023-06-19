@@ -6,9 +6,7 @@ let texter = document.querySelector("#textdisplayer");
 
 const client  = mqtt.connect('ws://broker.emqx.io:8083/mqtt')
 
-function updateColor(event) {
-      colorpreview.style.backgroundColor = event.target.value;
-  }
+
 
   client.on('connect', function () {
     client.subscribe('wled/9df798', function (err) {
@@ -31,18 +29,20 @@ function updateColor(event) {
   client.on('message', function (topic, message) {
     // message is Buffer
     console.log(topic + " " + message.toString())
+    textinChat(message);
+      colorpreview.style.backgroundColor = message;
+
   })
 
-function textinChat (element1){
+function textinChat (color){
   const textColor = document.createElement("p");
-textColor.innerHTML = "User selected: " + element1.value;
+textColor.innerHTML = "User selected: " + color;
 document.querySelector("#textdisplayer").appendChild(textColor);
 texter.scrollTop = texter.scrollHeight;
 }
 
-colorpicker.addEventListener("input", updateColor);
 colorpicker.addEventListener("input", () => {client.publish('wled/9df798/col', colorpicker.value);
-textinChat(colorpicker);
+
 });
 onswitch.addEventListener('change', function() {
   if (this.checked) {
