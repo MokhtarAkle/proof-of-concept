@@ -33,14 +33,16 @@ function updateColor(event) {
     console.log(topic + " " + message.toString())
   })
 
-  
+function textinChat (element1){
+  const textColor = document.createElement("p");
+textColor.innerHTML = "User selected: " + element1.value;
+document.querySelector("#textdisplayer").appendChild(textColor);
+texter.scrollTop = texter.scrollHeight;
+}
 
 colorpicker.addEventListener("input", updateColor);
 colorpicker.addEventListener("input", () => {client.publish('wled/9df798/col', colorpicker.value);
-const textColor = document.createElement("p");
-textColor.innerHTML = colorpicker.value;
-document.querySelector("#textdisplayer").appendChild(textColor);
-texter.scrollTop = texter.scrollHeight;
+textinChat(colorpicker);
 });
 onswitch.addEventListener('change', function() {
   if (this.checked) {
@@ -50,4 +52,6 @@ onswitch.addEventListener('change', function() {
   }
 });
 
-rangeslider.addEventListener('change', () => {client.publish('wled/9df798/api', 'bri=' + rangeslider.value)});
+rangeslider.addEventListener('change', () => {client.publish('wled/9df798/api', 'bri=' + rangeslider.value)
+textinChat(rangeslider);
+});
