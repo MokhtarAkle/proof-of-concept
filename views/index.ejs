@@ -1,6 +1,7 @@
 <%- include('./partials/head') %>
 
 <main>
+    <h1>Random Studio</h1>
     <div id="textdisplayer">
         
     </div>
@@ -8,33 +9,43 @@
 
     </div>
     <section id="slidermain">
+        <form action="/" method="post">
         <div id="bigcontainer">
         <div id="onswitch">
-            <input type="checkbox" id="switch" />
+            <input type="checkbox" id="switch" name="on" value="true"/>
             <label for="switch">Toggle</label>
         </div>
-        <input type="text" data-coloris>
-
     <div>
-        <input type="color" id="colorpicker" name="color"
+        <input type="color" id="colorpicker" name="col"
                value="#34cfe07c">
         <label for="colorpicker">Choose color:</label>
     </div>
-
-
-    <input type="range" min="0" max="255" value="100" id="rangeSlider">
     </div>
+    <input type="range" min="0" max="255" value="100" id="rangeSlider" name="bri">
+
     <div id="selectlist">
-        <select>
-            <option>Preset 1</option>
+        <div>
+            <select name="ps">
+                <% for(let i = 0; i < 16; i++){ %>
+                    <option value="<%= [i] %>" ><%= "Preset " + i %></option>
+                    <% } %>
+            </select>
+        </div>
+
+        <select name="effects">
+            <% for(let i = 0; i < data.effects.length; i++){ %>
+                <option value="<%= data.effects[i] %>" ><%= data.effects[i] %></option>
+                <% } %>
         </select>
-        <select>
-            <option>Effect 1</option>
+        <select name="palettes">
+            <% for(let i = 0; i < data.palettes.length; i++){ %>
+                <option value="<%= data.palettes[i] %>" ><%= data.palettes[i] %></option>
+                <% } %>
         </select>
-        <select>
-            <option>Palette 1</option>
-        </select>
-        <input type="number" placeholder="00.00" min="00.00" max="60.00">
+        <input type="number" placeholder="0,00" step="0.01" min="0" max="60" id="numberCount">
+        <input type="submit" value="Save Preset"></input>
+
+    </form>
     </div>
 
 </section>

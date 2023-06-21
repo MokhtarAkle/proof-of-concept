@@ -1,21 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:wght@700&display=swap');
+
+body{
+    background-color: #F8F8F8;
+}
+
 main{
     display: flex;
     flex-flow: column wrap;
+}
 
+h1{
+    font-family: 'PT Serif', serif;
+    width: 10%;
+    font-size: 50px;
 }
 
 #slidermain{
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: row wrap;
     align-self: center;
-    height: 50vh;
+    height: 40vh;
     justify-content: center;
+    width: 30vh;
 }
 
 #bigcontainer{
     display:flex;
     flex-flow: row wrap;
-    width: 19em;
+    width: 16em;
+    justify-content: center;
+    height: auto;
 }
 #colorpreview{
     width: 30em;
@@ -38,6 +52,10 @@ main{
     height: 10em;
     overflow: auto;
     border: 2px solid rgba(70, 64, 64, 0.582);
+}
+
+#onswitch{
+    margin-bottom: 1em;
 }
 #onswitch > input[type=checkbox]{
     height: 0;
@@ -83,5 +101,5 @@ main{
 
 #rangeSlider{
     transform: rotate(270deg);
-    
+    margin-left: auto;
 }
