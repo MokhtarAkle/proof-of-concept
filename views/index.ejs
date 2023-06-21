@@ -16,21 +16,19 @@
             <label for="switch">Toggle</label>
         </div>
     <div>
+        <label for="colorpicker">Choose color:</label>
         <input type="color" id="colorpicker" name="col"
                value="#34cfe07c">
-        <label for="colorpicker">Choose color:</label>
     </div>
     </div>
     <input type="range" min="0" max="255" value="100" id="rangeSlider" name="bri">
 
     <div id="selectlist">
-        <div>
-            <select name="ps">
+        <select name="ps">
                 <% for(let i = 0; i < 16; i++){ %>
                     <option value="<%= [i] %>" ><%= "Preset " + i %></option>
                     <% } %>
-            </select>
-        </div>
+        </select>
 
         <select name="effects">
             <% for(let i = 0; i < data.effects.length; i++){ %>
