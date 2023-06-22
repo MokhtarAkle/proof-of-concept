@@ -21,8 +21,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function(req, res, next) {
     res.render('index', {data: data})
+    console.log(req.query.selectLight)
+
+
+
   });
 
+ 
 app.post('/', (request, response) => {
 
   const url = './public/exampleapi.json'

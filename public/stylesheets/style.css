@@ -1,9 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=PT+Serif:wght400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Roboto&display=swap');
 
 body{
     background-color: #F8F8F8;
-    font-family: 'PT Serif', serif;
-
+    font-family: 'Roboto', sans-serif;
 }
 
 main{
@@ -17,11 +16,24 @@ h1{
     font-size: 50px;
 }
 
+h2{
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: 3em;
+}
+
+#colorpreview{
+    margin-bottom: .5em;
+}
+
 #slidermain{
     display: flex;
     flex-flow: row wrap;
     align-self: center;
-    height: 40vh;
     justify-content: center;
     width: 30vh;
 }
@@ -46,7 +58,8 @@ h1{
     display: flex;
     flex-flow: column wrap;
     width: 4em;
-    
+    margin-top: -15em;
+
 }
 
 #textdisplayer{
@@ -56,6 +69,26 @@ h1{
     border: 2px solid rgba(70, 64, 64, 0.582);
 }
 
+#userdisplayer{
+    position: absolute;
+    bottom: 1em;
+    width: 10em;
+    height: 10em;
+    overflow: auto;
+    border: 2px solid rgba(70, 64, 64, 0.582);
+}
+
+#userdisplayer > p:nth-of-type(1){
+    border-bottom: 2px solid rgba(70, 64, 64, 0.582);
+    padding-left: 5px;
+    padding-bottom: 2px;
+    font-weight: bold;
+}
+
+#userdisplayer > p{
+    padding-left: 5px;
+    padding-bottom: 2px;
+}
 #onswitch{
     margin-bottom: 1em;
 }
@@ -101,20 +134,49 @@ h1{
     width: 130px;
 }
 
+#rangeLabel{
+    margin-left: 3.2em;
+    display: block;
+    padding-top: 3em;
+}
 #rangeSlider{
+    -webkit-appearance: none;
     transform: rotate(270deg) translateY(5em);
     margin-left: auto;
     display: block;
+    width: 50%;
+    border-radius: 5px;  
+    background: grey;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
 }
 
+#rangeSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%; 
+    background: white;
+    cursor: pointer;
+  }
+
+  #rangeSlider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+  }
 #selectlist > select, #selectlist > input{
-    padding: .75em;
     margin-left: auto;
     transform: translateX(40em);
     width: 10em;
-    margin-top: .5em;
+    padding: .75em;
+    margin-bottom: 1em;
 }
 
+#selectlist > label{
+    transform: translateX(33.5em);
+}
 #selectlist > input{
     width: 8.35em;
 }

@@ -2,8 +2,13 @@
 
 <main>
     <h1>Random Studio</h1>
+    <h2>LED Collaboration tool</h2>
     <div id="textdisplayer">
         
+    </div>
+    <div id="userdisplayer">
+        <p>Connected users:</p>
+
     </div>
     <div id="colorpreview">
 
@@ -11,6 +16,7 @@
     <section id="slidermain">
         <form action="/" method="post">
         <div id="bigcontainer">
+            <label for="onswitch">Turn device ON/OFF</label>
         <div id="onswitch">
             <input type="checkbox" id="switch" name="on" value="true"/>
             <label for="switch">Toggle</label>
@@ -21,31 +27,48 @@
                value="#34cfe07c">
     </div>
     </div>
-    <input type="range" min="0" max="255" value="100" id="rangeSlider" name="bri">
+
+        <label for="rangeSlider" id="rangeLabel">Select brightness:</label>
+        <input type="range" min="0" max="255" value="100" id="rangeSlider" name="bri">
 
     <div id="selectlist">
-        <select name="ps">
+        <label for="psselect">Select preset:</label>
+        <select name="ps" id="psselect">
                 <% for(let i = 0; i < 16; i++){ %>
                     <option value="<%= [i] %>" ><%= "Preset " + i %></option>
                     <% } %>
         </select>
-
-        <select name="effects">
+        <label for="effectselect">Select effect:</label>
+        <select name="effects" id="effectselect">
             <% for(let i = 0; i < data.effects.length; i++){ %>
                 <option value="<%= data.effects[i] %>" ><%= data.effects[i] %></option>
                 <% } %>
         </select>
-        <select name="palettes">
+        <label for="paletteselect">Select palette:</label>
+        <select name="palettes" id="paletteselect">
             <% for(let i = 0; i < data.palettes.length; i++){ %>
                 <option value="<%= data.palettes[i] %>" ><%= data.palettes[i] %></option>
                 <% } %>
         </select>
+        <label for="numberCount">Select transition:</label>
         <input type="number" placeholder="0,00" step="0.01" min="0" max="60" id="numberCount">
         <input type="submit" value="Save Preset"></input>
-
-    </form>
     </div>
 
+    </form>
+
+    <!-- <form action="/custom1" method="get" id="lightSelect">
+        <select id="lightOptions" name="selectLight">
+            <option value="custom1">Custom 1</option>
+            <option value="custom2">Custom 2</option>
+            <option value="custom3">Custom 3</option>
+            <option value="custom4">Custom 4</option>
+        </select>
+        <input type="text" id="storageText">
+
+        <input type="submit" value="Change Light">
+
+    </form> -->
 </section>
 
 </main>

@@ -3,9 +3,14 @@ let colorpreview = document.querySelector("#colorpreview");
 let onswitch = document.querySelector("#switch");
 let rangeslider = document.querySelector("#rangeSlider");
 let texter = document.querySelector("#textdisplayer");
+let userDisplay = document.querySelector("#userdisplayer");
 let bodyBG = document.querySelector("body")
 let listItems = document.querySelectorAll("select")
 let numbered = document.querySelector("#numberCount");
+let lightSelect = document.querySelector("#lightSelect");
+let lightOptions = document.querySelector("#lightOptions");
+
+
 const clientId = 'User_' + Math.random().toString(16).substr(2, 8)
     const options = {
       keepalive: 60,
@@ -35,7 +40,6 @@ initializeSelects();
     console.log(clientId)
   client.on('connect', function () {
     client.subscribe('status/client-id', function (err) {
-
     })
     client.subscribe('wled/9df798', function (err) {
 
@@ -45,6 +49,9 @@ initializeSelects();
       })
     client.subscribe('wled/9df798/col', function (err) {
 
+      })
+    client.subscribe('status/client-display', function (err) {
+        client.publish('status/client-display', clientId);
       })   
   })
   let dynId;
@@ -53,9 +60,14 @@ initializeSelects();
     // message is Buffer
 
     console.log(topic + " " + message.toString())
-
+    if(topic == "status/client-display"){
+      userSetup(message);
+    }
+    else{
       textinChat(message);
       colorpreview.style.backgroundColor = message;
+    }
+
 
   })
 
@@ -67,9 +79,9 @@ texter.scrollTop = texter.scrollHeight;
 }
 
 function userSetup(user){
-  const dynamicID = document.createElement("p");
-  dynamicID.innerHTML = user + " selected: ";
-  document.querySelector("#textdisplayer").appendChild(dynamicID);
+  const userD = document.createElement("p");
+  userD.innerHTML = user;
+  userDisplay.appendChild(userD);
 }
 
 colorpicker.addEventListener("change", () => {
@@ -102,4 +114,8 @@ for(let i = 0; i < listItems.length; i++){
 numbered.addEventListener('change', () => {
   client.publish('status/client-id', clientId + " Selected transition time: ");
   client.publish('wled/9df798/api', numbered.value)
+});
+
+lightOptions.addEventListener('change', () => {
+  lightSelect.action = "/" + lightOptions.value;
 });
