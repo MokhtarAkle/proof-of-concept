@@ -21,7 +21,7 @@ const clientId = 'User_' + Math.random().toString(16).substr(2, 8)
       reconnectPeriod: 1000,
       connectTimeout: 30 * 1000,
     }
-const client  = mqtt.connect('ws://broker.emqx.io:8083/mqtt', options)
+const client  = mqtt.connect('wss://broker.emqx.io:8084/mqtt', options)
 
 
 async function initializeSelects(){
@@ -116,6 +116,3 @@ numbered.addEventListener('change', () => {
   client.publish('wled/9df798/api', numbered.value)
 });
 
-lightOptions.addEventListener('change', () => {
-  lightSelect.action = "/" + lightOptions.value;
-});
