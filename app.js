@@ -6,7 +6,7 @@ var port = process.env.PORT || 3000;
 var server = http.createServer(app);
 import { fileURLToPath } from 'url';
 import 'dotenv/config'
-import data from './public/exampleapi.json' assert { type: "json" };
+import data from './public/exampleapi.json' with { type: "json" };
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
