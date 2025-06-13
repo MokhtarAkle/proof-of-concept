@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon app.js",
-    "start": "node --experimental-json-modules app.js"
+    "start": "node --experimental-json-modules app.js",
+    "build": "node app.js'"
   },
   "dependencies": {
     "contrast-color": "^1.0.1",
