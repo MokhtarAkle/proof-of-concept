@@ -5,8 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon app.js",
-    "start": "node --experimental-json-modules app.js",
-    "build": "babel . --out-dir dist --ignore node_modules,public"
+    "start": "node --experimental-json-modules app.js"
   },
   "dependencies": {
     "contrast-color": "^1.0.1",
@@ -16,9 +15,7 @@
     "mqtt": "^4.3.7",
     "node-fetch": "^3.3.1"
   },
-  "devDependencies": {
-    "@babel/cli": "^7.27.2",
-    "@babel/core": "^7.27.4",
-    "@babel/preset-env": "^7.27.2"
+  "engines": {
+    "node": "22.x"
   }
 }

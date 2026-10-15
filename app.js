@@ -2,13 +2,14 @@ import express from 'express';
 import path from 'path';
 var app = express();
 import * as http from 'http';
+import fs from 'fs';
 var port = process.env.PORT || 3000;
 var server = http.createServer(app);
 import { fileURLToPath } from 'url';
 import 'dotenv/config'
-import data from './public/exampleapi.json' with { type: "json" };
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const data = JSON.parse(fs.readFileSync(path.join(__dirname, 'public', 'exampleapi.json'), 'utf8'));
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -27,38 +28,20 @@ app.get('/', function(req, res, next) {
 
   });
 
- 
+
 app.post('/', (request, response) => {
-
-  const url = './public/exampleapi.json'
-    postJson(url, request.body).then((data) => {
-      let newPreset = { ... request.body}
-      console.log(JSON.stringify(request.body));
-     if (data.success) {
-          response.redirect('/presetSaved')
-      }
-      else {
-      const errorMessage = data.message
-  
-      }
-    })
+  // There is no API to save presets to, so log the preset and return to the form.
+  // Previously this posted to a relative file path, which always failed and left the request hanging.
+  console.log(JSON.stringify(request.body));
+  response.redirect('/')
   })
-server.listen(port, () => {
-    console.log('listening on http://localhost:' + port);
-  
-  });
 
+// On Vercel the exported app runs as a serverless function, so only listen when running locally
+if (!process.env.VERCEL) {
+  server.listen(port, () => {
+      console.log('listening on http://localhost:' + port);
 
-
-
-  async function postJson(url, body) {
-    return await fetch(url, {
-      method: 'post',
-      body: JSON.stringify(body),
-      headers: { 'Content-Type': 'application/json' },
-    })
-      .then((response) => response.json())
-      .catch((error) => error)
-  }
+    });
+}
 
 export default app;
